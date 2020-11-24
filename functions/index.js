@@ -9,7 +9,7 @@ const axios = require('axios');
 // *** config ***
 const OPEN_WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather';
 const MEASUREMENT_UNITS = 'metric';
-const OPEN_WEATHER_ICON_URL = 'http://openweathermap.org/img/w';
+const OPEN_WEATHER_ICON_URL = 'https://openweathermap.org/img/w';
 
 
 exports.getCurrentWeather = functions.https.onCall(async (data, context) => {
