@@ -3,6 +3,9 @@
 # IDE
 .idea
 
+# firebase
+.runtimeconfig.json
+
 # dependencies
 /node_modules
 /.pnp

@@ -2,11 +2,19 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 
+// *** firebase ***
+import { functions } from '../../firebase';
+
+
 // *** components ***
 // atoms
 import { Header3 } from '../atoms/document_sections';
 // molecules
 import UserSwitcher from '../molecules/UserSwitcher';
+
+
+// *** config ***
+const WEATHER_LOCATION = 'Greenwich,gb';
 
 
 // *** styled ***
@@ -21,6 +29,38 @@ const StyledStatusBar = styled('div')`
   
   background: ${({ theme: { colors } }) => (colors.white)};
 `;
+
+const StatusInfo = styled('div')`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+
+const WeatherDisplayWrapper = styled('div')`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-right: ${({ theme: { spacing } }) => (spacing.md)};
+`;
+
+const WeatherIcon = styled('img')`
+  width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * 0.03)}px;
+  
+  margin-left: ${({ theme: { spacing } }) => (spacing.md)};
+`;
+
+const WeatherDisplay = ({ temp, icon, ...props }) => {
+    const roundedTemp = parseFloat(temp).toFixed(1);
+
+    return (
+        <WeatherDisplayWrapper>
+            <Header3>{ roundedTemp }&#8451;</Header3>
+            <WeatherIcon src={icon} alt='current weather'/>
+        </WeatherDisplayWrapper>
+    )
+};
 
 
 const StatusBar = () => {
@@ -41,20 +81,55 @@ const StatusBar = () => {
             setInterval(() => setTime(getCurrentTime()), 1000);
 
         return () => clearInterval(timeInterval);
-    });
+    }, []);
 
 
     // live weather
-    // const getCurrentWeather = () => {
-    //
-    // };
+    const getCurrentWeather = async () => {
+        let response;
+        try {
+            response = await functions.httpsCallable('getCurrentWeather')({
+                location: WEATHER_LOCATION
+            });
+
+        } catch (err) {
+            console.log('failed to get response...');
+            console.log(err);
+        }
+
+        return response.data;
+    };
+
+    const [ weather, setWeather ] = React.useState(null);
+
+    // update weather every minute
+    React.useEffect( () => {
+        const updateWeather = async () => {
+            const weather = await getCurrentWeather();
+            setWeather(weather);
+        };
+
+        // set get weather interval
+        const weatherInterval =
+            setInterval(updateWeather, 60000);
+        // get initial weather
+        (async () => await updateWeather())();
+
+        return () => clearInterval(weatherInterval);
+    }, []);
 
 
     return (
         <StyledStatusBar>
             <UserSwitcher/>
 
-            <Header3>{ time }</Header3>
+            <StatusInfo>
+                {weather && (
+                    <WeatherDisplay temp={weather.temp} icon={weather.icon} />
+                )}
+
+                <Header3>{ time }</Header3>
+            </StatusInfo>
         </StyledStatusBar>
     );
 };
