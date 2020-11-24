@@ -7,9 +7,6 @@ import { Header2, Header3 } from '../components/atoms/document_sections';
 import { MusicIcon, RouteIcon, PhoneIcon, CommentsIcon, CogIcon, CarIcon } from '../components/atoms/icons/solid';
 
 
-// *** templates ***
-
-
 // *** styled ***
 // config
 const RelNavOptionSize = 0.2;

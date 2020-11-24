@@ -1,7 +1,7 @@
 
 // firebase
 // import * as firebase from 'firebase/app';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 // firebase services
 import 'firebase/functions';
@@ -28,8 +28,8 @@ if (!firebase.apps.length)
 export const functions = firebase.functions();
 
 
-if (window.location.hostname === 'localhost')
-    functions.useEmulator('localhost', 5001);
+// if (window.location.hostname === 'localhost')
+//     functions.useEmulator('localhost', 5001);
 
 
 export { firebase };
