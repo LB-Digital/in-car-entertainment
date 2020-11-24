@@ -44,7 +44,7 @@ const fontWeights = {
 };
 
 const cursor = (screenDimensions) => ({
-    size: `${screenDimensions.width * 0.02}px`,
+    size: `${screenDimensions.width * 0.01}px`,
 });
 
 

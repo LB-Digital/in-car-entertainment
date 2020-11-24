@@ -99,21 +99,21 @@ const _Home = () => {
 
             <HomeNav>
                 <HomeNavOption onClick={() => handleClickNavOption('MUSIC')}>
-                    <HomeNavOptionContent style={{ background: '#D60E0A' }}>
+                    <HomeNavOptionContent style={{ background: '#C004D9' }}>
                         <MusicIcon size='lg' />
                         <HomeNavOptionTitle>Music</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#22D354' }}>
+                    <HomeNavOptionContent style={{ background: '#5A13F2' }}>
                         <RouteIcon size='lg' />
                         <HomeNavOptionTitle>Nav</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#6e44ff' }}>
+                    <HomeNavOptionContent style={{ background: '#138AF2' }}>
                         <CarIcon size='lg' />
                         <HomeNavOptionTitle>Car</HomeNavOptionTitle>
                     </HomeNavOptionContent>

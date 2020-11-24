@@ -73,9 +73,9 @@ function App() {
 
 
     React.useEffect(() => {
+        const cursor = document.querySelector('.cursor');
+
         const handleMouseMove = (ev) => {
-            // setCursorPos({ x: ev.pageX, y: ev.pageY });
-            const cursor = document.querySelector('.cursor');
             cursor.style.left = `${ev.pageX}px`;
             cursor.style.top = `${ev.pageY}px`;
         };
