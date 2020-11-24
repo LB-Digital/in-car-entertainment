@@ -75,6 +75,7 @@ function App() {
         }
     });
 
+    console.log('App.js render');
 
     return (
         <ThemeProvider

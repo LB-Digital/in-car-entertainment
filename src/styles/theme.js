@@ -43,6 +43,10 @@ const fontWeights = {
     bold: 700
 };
 
+const cursor = (screenDimensions) => ({
+    size: `${screenDimensions.width * 0.02}px`,
+});
+
 
 // *** split styles (light/dark) ***
 const colors = {
@@ -72,8 +76,9 @@ const baseTheme = (screenDimensions) => ({
     fontSizes: fontSizes(screenDimensions),
     iconSizes: iconSizes(screenDimensions),
     fontWeights,
+    cursor: cursor(screenDimensions),
 
-    borderRadius: '10px'
+    borderRadius: `${screenDimensions.width * 0.007}px`
 });
 
 export const lightTheme = (screenDimensions) => ({

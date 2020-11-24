@@ -58,7 +58,7 @@ const HomeNavOptionContent = styled('div')`
   
   padding: ${({ theme: { spacing } }) => (spacing.md)};
 
-  border-radius: 10px;
+  border-radius: ${({ theme: { borderRadius } }) => (borderRadius)};
   
   svg {
     fill: #fff;
@@ -87,21 +87,21 @@ const Home = () => {
 
             <HomeNav>
                 <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#ff423a' }}>
+                    <HomeNavOptionContent style={{ background: '#D60E0A' }}>
                         <MusicIcon width='60%' />
                         <HomeNavOptionTitle>Music</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#72b927' }}>
+                    <HomeNavOptionContent style={{ background: '#22D354' }}>
                         <RouteIcon width='60%' />
                         <HomeNavOptionTitle>Nav</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#0b8fff' }}>
+                    <HomeNavOptionContent style={{ background: '#6e44ff' }}>
                         <CarIcon width='60%' />
                         <HomeNavOptionTitle>Car</HomeNavOptionTitle>
                     </HomeNavOptionContent>

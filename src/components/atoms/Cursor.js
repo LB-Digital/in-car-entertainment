@@ -1,13 +1,12 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import { transparentize } from 'polished';
 
 
-const Cursor = styled(({ posX, posY, ...props }) => (<div {...props} />))`
+const Cursor = styled('div')`
   position: absolute;
   
-  width: 30px;
-  height: 30px;
+  width: ${({ theme: { cursor } }) => (cursor.size)};
+  height: ${({ theme: { cursor } }) => (cursor.size)};
   transform: translate(-50%, -50%);
   
   pointer-events: none;
