@@ -2,10 +2,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 
+/* firebase */
+import { functions } from '../../firebase';
+
+
 /* components */
 // atoms
 import { Header3 } from '../atoms/document_sections';
-import {functions} from '../../firebase';
 
 
 /* config */

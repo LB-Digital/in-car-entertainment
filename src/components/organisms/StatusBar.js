@@ -8,13 +8,8 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../config/routes';
 
 
-/* firebase */
-import { functions } from '../../firebase';
-
-
 /* components */
 // atoms
-import { Header3 } from '../atoms/document_sections';
 import { HomeIcon, AdjustIcon, EyeSlashIcon } from '../atoms/icons/solid';
 // molecules
 import { UserSwitcher, TimeDisplay, WeatherDisplay } from '../molecules';

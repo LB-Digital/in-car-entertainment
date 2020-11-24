@@ -1,14 +1,9 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 
 /* components */
 // atoms
 import { Header1, Header3 } from '../atoms/document_sections';
-
-
-/* styled */
-// const StyledTimeDisplay = styled
 
 
 const _TimeDisplay = ({ size }) => {
