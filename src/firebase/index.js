@@ -28,7 +28,8 @@ if (!firebase.apps.length)
 export const functions = firebase.functions();
 
 
-functions.useEmulator('localhost', 5001);
+if (window.location.hostname === 'localhost')
+    functions.useEmulator('localhost', 5001);
 
 
 export { firebase };

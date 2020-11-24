@@ -51,7 +51,7 @@ const WeatherIcon = styled('img')`
   margin-left: ${({ theme: { spacing } }) => (spacing.md)};
 `;
 
-const WeatherDisplay = ({ temp, icon, ...props }) => {
+const WeatherDisplay = ({ temp, icon }) => {
     const roundedTemp = parseFloat(temp).toFixed(1);
 
     return (
