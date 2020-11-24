@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 
 // *** styles ***
 import GlobalStyle from './styles/GlobalStyle';
-import { lightTheme } from './styles/theme';
+import { lightTheme, darkTheme } from './styles/theme';
 
 
 // *** config ***
@@ -24,11 +24,19 @@ const Music = React.lazy(() => AllPages.then(module => ({ default: module.Music 
 
 
 function App() {
+    /* state */
+    // screen dimensions
     const [ dimensions, setDimensions ] = React.useState({
         width: window.innerWidth,
         height: window.innerHeight
     });
 
+    // theme
+    const [ themeType, setThemeType ] = React.useState('light');
+
+
+    /* hooks */
+    // effects
     React.useEffect(() => {
         const handleResize = () =>
             setDimensions({
@@ -54,12 +62,9 @@ function App() {
         screenDimensions.height = dimensions.height;
         screenDimensions.width = screenDimensions.height * aspectRatio;
     }
-
     // console.log(screenDimensions);
 
 
-    // const [ cursorPos, setCursorPos ] = React.useState({ x: 0, y: 0 });
-    // const cursorRef = React.useRef(null);
     React.useEffect(() => {
         const handleMouseMove = (ev) => {
             // setCursorPos({ x: ev.pageX, y: ev.pageY });
@@ -76,16 +81,26 @@ function App() {
         }
     });
 
-    console.log('App.js render');
+
+    /* handlers */
+    // theme
+    const handleToggleTheme = () =>
+        setThemeType((themeType === 'light') ? 'dark' : 'light');
+
+
+    /* render */
+    const theme = (themeType === 'light')
+        ? lightTheme(screenDimensions)
+        : darkTheme(screenDimensions);
 
     return (
         <ThemeProvider
-            theme={{ ...lightTheme(screenDimensions), screenDimensions }}
+            theme={{ ...theme, screenDimensions }}
         >
             <GlobalStyle/>
 
             <HashRouter>
-                <Screen>
+                <Screen toggleTheme={handleToggleTheme}>
                     <Cursor className='cursor' />
                     <React.Suspense fallback={<p>Loading...</p>}>
                         <Switch>

@@ -33,7 +33,7 @@ const fontSizes = (screenDimensions) => ({
 
 const iconSizes = (screenDimensions) => ({
     sm: '24px',
-    md: '32px',
+    md: `${screenDimensions.width * 0.03}px`,
     lg: `${screenDimensions.width * 0.09}px`
 });
 
@@ -54,6 +54,7 @@ const colors = {
         pageBackground: '#000',
         screenBackground: '#eee',
 
+        black: '#000',
         white: '#fff',
         dark: '#111'
     },
@@ -62,6 +63,7 @@ const colors = {
         pageBackground: '#fff',
         screenBackground: '#111',
 
+        black: '#fff',
         white: '#000',
         dark: '#eee'
     }

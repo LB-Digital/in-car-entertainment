@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const StyledText = styled('p')`
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.medium};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.p};
+  color: ${({ theme: { colors } }) => colors.black};
 `;
 
 

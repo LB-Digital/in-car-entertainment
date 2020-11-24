@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { transparentize } from 'polished';
 import { Link } from 'react-router-dom';
 
 
@@ -7,14 +8,14 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../config/routes';
 
 
-// *** firebase ***
+/* firebase */
 import { functions } from '../../firebase';
 
 
-// *** components ***
+/* components */
 // atoms
 import { Header3 } from '../atoms/document_sections';
-import { HomeIcon } from '../atoms/icons/solid';
+import { HomeIcon, AdjustIcon } from '../atoms/icons/solid';
 // molecules
 import UserSwitcher from '../molecules/UserSwitcher';
 
@@ -23,7 +24,7 @@ import UserSwitcher from '../molecules/UserSwitcher';
 const WEATHER_LOCATION = 'Greenwich,gb';
 
 
-// *** styled ***
+/* styled */
 // components
 const StyledStatusBar = styled('div')`
   display: flex;
@@ -36,10 +37,21 @@ const StyledStatusBar = styled('div')`
   background: ${({ theme: { colors } }) => (colors.white)};
 `;
 
-const StatusInfo = styled('div')`
+const BarSection = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  height: 100%;
+  padding: ${({ theme: { spacing } }) => (spacing.sm)};
+  
+  border-radius: ${({ theme: { borderRadius } }) => (borderRadius)};
+  background: ${({ theme: { colors } }) => (transparentize(0.9, colors.dark))};
+  
+  
+  & > *:not(:last-child) {
+    margin-right: ${({ theme: { spacing } }) => (spacing.lg)};
+  }
 `;
 
 
@@ -47,8 +59,6 @@ const WeatherDisplayWrapper = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  margin-right: ${({ theme: { spacing } }) => (spacing.lg)};
 `;
 
 const WeatherIcon = styled('img')`
@@ -71,7 +81,7 @@ const WeatherDisplay = ({ temp, icon }) => {
 };
 
 
-const StatusBar = () => {
+const StatusBar = ({ toggleTheme }) => {
     // live time
     const getCurrentTime = () => {
         const now = new Date();
@@ -132,19 +142,26 @@ const StatusBar = () => {
 
     return (
         <StyledStatusBar>
-            <UserSwitcher/>
+            <BarSection>
+                <UserSwitcher/>
+            </BarSection>
 
-            <Link to={ROUTES.HOME}>
-                <HomeIcon size='md' />
-            </Link>
+            <BarSection>
+                <Link to={ROUTES.HOME}>
+                    <HomeIcon size='md' />
+                </Link>
 
-            <StatusInfo>
+                <AdjustIcon onClick={() => toggleTheme()} size='md' />
+            </BarSection>
+
+
+            <BarSection>
                 {weather && (
                     <WeatherDisplay temp={weather.temp} icon={weather.icon} />
                 )}
 
                 <Header3>{ time }</Header3>
-            </StatusInfo>
+            </BarSection>
         </StyledStatusBar>
     );
 };

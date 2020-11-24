@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { transparentize } from 'polished';
 import { useHistory } from 'react-router-dom';
 
 
@@ -21,7 +22,8 @@ import { Text } from '../atoms/grouping_content';
 
 /* styled */
 // config
-const RelSwitcherWidth = 0.15;
+const RelSwitcherWidth = 0.138;
+const RelSwitcherDropdownWidth = 0.15;
 const RelAvatarSize = 0.035;
 
 // components
@@ -29,6 +31,7 @@ const UserSwitcherWrapper = styled('div')`
   position: relative;
   
   width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelSwitcherWidth)}px;
+  //background: red;
 `;
 
 const UserDisplay = styled(({ addSpacing, highlight, ...props }) => <div {...props} />)`
@@ -65,12 +68,21 @@ const UserSwitchDropdown = styled('div')`
   left: -${({ theme: { spacing } }) => (spacing.sm)};
   overflow: hidden;
   
-  width: 100%;
+  width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelSwitcherDropdownWidth)}px;
   
-  background: rgba(0, 0, 0, 0.8);
+  //background: rgba(0, 0, 0, 0.8);
+  background: ${({ theme: { colors } }) => transparentize(0.2, colors.black)};
   border-radius: ${({ theme: { borderRadius } }) => (borderRadius)};
-  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
-  color: #fff;
+  //box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 6px 0 ${({ theme: { colors } }) => transparentize(0.8, colors.black)};
+`;
+
+const UserName = styled((props) => <Header3 {...props} />)`
+  color: ${({ theme: { colors } }) => colors.white};
+`;
+
+const SwitchText = styled((props) => <Text {...props} />)`
+  color: ${({ theme: { colors } }) => colors.white}!important;
 `;
 
 
@@ -140,7 +152,7 @@ const UserSwitcher = () => {
                     >
                         <Avatar src={ user.avatar } />
                         <UserDisplayText>
-                            <Header3>{ user.name }</Header3>
+                            <UserName>{ user.name }</UserName>
                         </UserDisplayText>
                     </UserDisplay>
                     {
@@ -153,8 +165,8 @@ const UserSwitcher = () => {
                                 <UserDisplay key={userId} addSpacing={true} onClick={() => handlePressUser(userId)}>
                                     <Avatar src={user.avatar} />
                                     <UserDisplayText>
-                                        <Header3>{ user.name }</Header3>
-                                        <Text>Switch to User</Text>
+                                        <UserName>{ user.name }</UserName>
+                                        <SwitchText>Switch to User</SwitchText>
                                     </UserDisplayText>
                                 </UserDisplay>
                             )
