@@ -7,3 +7,13 @@ const functions = require('firebase-functions');
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+
+
+exports.getCurrentWeather = functions.https.onCall(async (data, context) => {
+    console.log('get current weather');
+    functions.logger.info('Hello logs!', { structuredData: true });
+
+
+
+    return { foo: 'hello world' };
+});
