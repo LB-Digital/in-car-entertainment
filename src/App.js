@@ -18,8 +18,9 @@ import Cursor from './components/atoms/Cursor';
 
 
 // *** pages ***
-const Home = React.lazy(() => import('./pages/Home'));
-
+const AllPages = import('./pages');
+const Home = React.lazy(() => AllPages.then(module => ({ default: module.Home })));
+const Music = React.lazy(() => AllPages.then(module => ({ default: module.Music })));
 
 
 function App() {
@@ -83,16 +84,17 @@ function App() {
         >
             <GlobalStyle/>
 
-            <Screen>
-                <Cursor className='cursor' />
-                <HashRouter>
+            <HashRouter>
+                <Screen>
+                    <Cursor className='cursor' />
                     <React.Suspense fallback={<p>Loading...</p>}>
                         <Switch>
                             <Route exact path={ROUTES.HOME} component={Home} />
+                            <Route exact path={ROUTES.MUSIC} component={Music} />
                         </Switch>
                     </React.Suspense>
-                </HashRouter>
-            </Screen>
+                </Screen>
+            </HashRouter>
         </ThemeProvider>
     );
 }

@@ -1,5 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+
+
+/* config */
+import * as ROUTES from '../../config/routes';
 
 
 /* assets */
@@ -78,24 +83,17 @@ const USERS = {
     'USER_1': {
         avatar: avatar1,
         name: 'Holly'
-    },
-    // 'USER_2': {
-    //     avatar: avatar0,
-    //     name: 'Alex'
-    // }
+    }
 };
 
 const UserSwitcher = () => {
-    // state
+    /* state */
     const [ activeUser, setActiveUser ] = React.useState('USER_0');
     const [ dropdownOpen, setDropdownOpen ] = React.useState(false);
 
-    // UI event handlers
-    const handlePressUser = (userId) => {
-        setActiveUser(userId);
-        setDropdownOpen(false);
-    };
 
+    /* hooks */
+    // effects
     React.useEffect(() => {
         const handlePressDoc = (ev) => {
             if (!ev.target.closest('.user-switch-dropdown') && dropdownOpen)
@@ -109,7 +107,20 @@ const UserSwitcher = () => {
         }
     });
 
+    // react-router-dom
+    const history = useHistory();
 
+
+    /* UI event handlers */
+    // on click
+    const handlePressUser = (userId) => {
+        setActiveUser(userId);
+        setDropdownOpen(false);
+        history.push(ROUTES.HOME);
+    };
+
+
+    /* render */
     const user = USERS[activeUser];
 
     return (

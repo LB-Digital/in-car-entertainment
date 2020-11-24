@@ -1,5 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+
+
+/* config */
+import * as ROUTES from '../config/routes';
 
 
 // *** atoms ***
@@ -76,14 +81,24 @@ const HomeNavOptionTitle = styled(({ small, ...props }) => (
 
 
 // Home page
-const Home = () => {
+const _Home = () => {
+    /* hooks */
+    // react-router-dom
+    const history = useHistory();
 
 
+    /* UI event handlers */
+    // on click
+    const handleClickNavOption = (navTo) =>
+        history.push(ROUTES[navTo]);
+
+
+    /* render */
     return (
         <StyledHome>
 
             <HomeNav>
-                <HomeNavOption>
+                <HomeNavOption onClick={() => handleClickNavOption('MUSIC')}>
                     <HomeNavOptionContent style={{ background: '#D60E0A' }}>
                         <MusicIcon width='60%' />
                         <HomeNavOptionTitle>Music</HomeNavOptionTitle>
@@ -131,4 +146,4 @@ const Home = () => {
     )
 };
 
-export default Home;
+export default _Home;
