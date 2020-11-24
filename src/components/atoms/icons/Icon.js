@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const StyledIcon = styled('svg')`
   width: ${({ width, size, theme: { iconSizes } }) => (width || (iconSizes[size || 'md']))};
   height: ${({ height }) => (height || null)};
-  fill: ${({ theme: { colors } }) => colors.black};
+  fill: ${({ theme: { colors } }) => colors.dark};
 `;
 
 
