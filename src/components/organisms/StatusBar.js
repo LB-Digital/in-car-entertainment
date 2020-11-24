@@ -44,10 +44,10 @@ const StatusBar = () => {
     });
 
 
-    // // live weather
-    // const getCurrentWeather = () => {
-    //
-    // };
+    // live weather
+    const getCurrentWeather = () => {
+
+    };
 
 
     return (
