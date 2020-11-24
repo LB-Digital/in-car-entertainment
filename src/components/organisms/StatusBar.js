@@ -1,5 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+
+/* config */
+import * as ROUTES from '../../config/routes';
 
 
 // *** firebase ***
@@ -9,6 +14,7 @@ import { functions } from '../../firebase';
 // *** components ***
 // atoms
 import { Header3 } from '../atoms/document_sections';
+import { HomeIcon } from '../atoms/icons/solid';
 // molecules
 import UserSwitcher from '../molecules/UserSwitcher';
 
@@ -127,6 +133,10 @@ const StatusBar = () => {
     return (
         <StyledStatusBar>
             <UserSwitcher/>
+
+            <Link to={ROUTES.HOME}>
+                <HomeIcon size='md' />
+            </Link>
 
             <StatusInfo>
                 {weather && (

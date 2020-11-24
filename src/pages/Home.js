@@ -100,21 +100,21 @@ const _Home = () => {
             <HomeNav>
                 <HomeNavOption onClick={() => handleClickNavOption('MUSIC')}>
                     <HomeNavOptionContent style={{ background: '#D60E0A' }}>
-                        <MusicIcon width='60%' />
+                        <MusicIcon size='lg' />
                         <HomeNavOptionTitle>Music</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption>
                     <HomeNavOptionContent style={{ background: '#22D354' }}>
-                        <RouteIcon width='60%' />
+                        <RouteIcon size='lg' />
                         <HomeNavOptionTitle>Nav</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption>
                     <HomeNavOptionContent style={{ background: '#6e44ff' }}>
-                        <CarIcon width='60%' />
+                        <CarIcon size='lg' />
                         <HomeNavOptionTitle>Car</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
@@ -123,21 +123,21 @@ const _Home = () => {
             <HomeNav>
                 <HomeNavOption small={true}>
                     <HomeNavOptionContent style={{ background: '#333' }}> {/* 8338ec */}
-                        <PhoneIcon width='60%' />
+                        <PhoneIcon size='lg' />
                         <HomeNavOptionTitle small={true}>Phone</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption small={true}>
                     <HomeNavOptionContent style={{ background: '#333' }}> {/* fb5607 */}
-                        <CommentsIcon width='60%' />
+                        <CommentsIcon size='lg' />
                         <HomeNavOptionTitle small={true}>Messages</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>
 
                 <HomeNavOption small={true}>
                     <HomeNavOptionContent style={{ background: '#333' }}>
-                        <CogIcon width='60%' />
+                        <CogIcon size='lg' />
                         <HomeNavOptionTitle small={true}>Settings</HomeNavOptionTitle>
                     </HomeNavOptionContent>
                 </HomeNavOption>

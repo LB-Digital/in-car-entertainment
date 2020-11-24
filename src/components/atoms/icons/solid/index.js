@@ -5,3 +5,4 @@ export { default as PhoneIcon } from './PhoneIcon';
 export { default as CommentsIcon } from './CommentsIcon';
 export { default as CogIcon } from './CogIcon';
 export { default as CarIcon } from './CarIcon';
+export { default as HomeIcon } from './HomeIcon';
