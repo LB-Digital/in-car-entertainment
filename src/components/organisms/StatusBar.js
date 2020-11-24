@@ -45,9 +45,9 @@ const StatusBar = () => {
 
 
     // live weather
-    const getCurrentWeather = () => {
-
-    };
+    // const getCurrentWeather = () => {
+    //
+    // };
 
 
     return (
