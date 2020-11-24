@@ -2,18 +2,25 @@
 
 
 // *** base styles ***
-const spacing = (screenDimensions) => ({
-    // xs: '4px',
-    // sm: '8px',
-    // md: '16px',
-    // lg: '24px',
-    // xl: '48px',
-    xs: `${screenDimensions.width * 0.003}px`,
-    sm: `${screenDimensions.width * 0.006}px`,
-    md: `${screenDimensions.width * 0.012}px`,
-    lg: `${screenDimensions.width * 0.024}px`,
-    xl: `${screenDimensions.width * 0.048}px`
-});
+const spacing = (screenDimensions) => {
+    const spacingRaw = {
+        xs: screenDimensions.width * 0.003,
+        sm: screenDimensions.width * 0.006,
+        md: screenDimensions.width * 0.012,
+        lg: screenDimensions.width * 0.024,
+        xl: screenDimensions.width * 0.048
+    };
+
+    return {
+        raw: spacingRaw,
+
+        xs: `${spacingRaw.xs}px`,
+        sm: `${spacingRaw.sm}px`,
+        md: `${spacingRaw.md}px`,
+        lg: `${spacingRaw.lg}px`,
+        xl: `${spacingRaw.xl}px`,
+    }
+};
 
 const fontSizes = (screenDimensions) => ({
     // root: '16px',

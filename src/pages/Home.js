@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 
@@ -35,14 +35,20 @@ const HomeNav = styled('div')`
   align-items: center;
 `;
 
-const HomeNavOption = styled(({ small, ...props }) => (<div {...props} />))`
+const HomeNavOption = styled(
+    React.forwardRef(
+        (
+            { small, ...props },
+            ref
+        ) => ( <div ref={ref} {...props} /> )
+    ))`
   width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelNavOptionSize)}px;
   height: ${({ small, theme: { screenDimensions } }) =>
-        (screenDimensions.width * (
-            small
-                ? RelNavOptionSizeSmall
-                : RelNavOptionSize
-        ))}px;
+    (screenDimensions.width * (
+        small
+            ? RelNavOptionSizeSmall
+            : RelNavOptionSize
+    ))}px;
 
   padding: ${({ theme: { spacing } }) => (spacing.md)};
 `;
@@ -80,17 +86,17 @@ const HomeNavOptionTitle = styled(({ small, ...props }) => (
 `;
 
 
-// Home page
-const _Home = () => {
-    /* hooks */
-    // react-router-dom
-    const history = useHistory();
 
+// Home page
+const _Home = ({ navWithTransition }) => {
 
     /* UI event handlers */
     // on click
-    const handleClickNavOption = (navTo) =>
-        history.push(ROUTES[navTo]);
+    const handleClickNavOption = async (navTo) => {
+        if (navTo === 'MUSIC') {
+            navWithTransition(ROUTES.MUSIC, '#C004D9', 'MUSIC', MusicIcon);
+        }
+    };
 
 
     /* render */

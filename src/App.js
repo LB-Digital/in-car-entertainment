@@ -12,9 +12,12 @@ import { lightTheme, darkTheme } from './styles/theme';
 import * as ROUTES from './config/routes';
 
 
-// *** atoms ***
+/* components */
+// atoms
 import { Screen } from './components/atoms/grouping_content';
 import Cursor from './components/atoms/Cursor';
+// molecules
+import { PageTransition } from './components/molecules';
 
 
 // *** pages ***
@@ -40,6 +43,9 @@ function App() {
 
     // low distraction mode
     const [ lowDistractionMode, setLowDistractionMode ] = React.useState(false);
+
+    // page transition
+    const [ pageTransition, setPageTransition ] = React.useState(null);
 
 
     /* hooks */
@@ -69,6 +75,7 @@ function App() {
         screenDimensions.height = dimensions.height;
         screenDimensions.width = screenDimensions.height * aspectRatio;
     }
+
     // console.log(screenDimensions);
 
 
@@ -98,6 +105,19 @@ function App() {
     const handleToggleLowDistractionMode = () =>
         setLowDistractionMode(!lowDistractionMode);
 
+    // page transition
+    const navWithTransition = async (navTo, color, title, icon) => {
+        console.log(`navWithTransition(${navTo})`);
+
+        setPageTransition({ navTo, color, title, icon });
+    };
+
+    const handlePageTransitionEnd = () => {
+        console.log('page transition ended!!');
+
+        setPageTransition(null);
+    };
+
 
     /* render */
     const theme = (themeType === 'light')
@@ -117,6 +137,14 @@ function App() {
                     showStatusBar={!lowDistractionMode}
                 >
                     <Cursor className='cursor' />
+
+                    {pageTransition && (
+                        <PageTransition
+                            onPageTransitionEnd={handlePageTransitionEnd}
+                            {...pageTransition}
+                        />
+                    )}
+
                     <React.Suspense fallback={<p>Loading...</p>}>
                         {lowDistractionMode ? (
                             <LowDistractionMode
@@ -124,7 +152,11 @@ function App() {
                             />
                         ) : (
                             <Switch>
-                                <Route exact path={ROUTES.HOME} component={Home} />
+                                <Route
+                                    exact
+                                    path={ROUTES.HOME}
+                                    component={() => <Home navWithTransition={navWithTransition} />}
+                                />
                                 <Route exact path={ROUTES.MUSIC} component={Music} />
                             </Switch>
                         )}
