@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled, { useTheme } from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
 
 /* config */
