@@ -12,6 +12,7 @@ const Cursor = styled('div')`
   pointer-events: none;
   background: ${({ theme: { colors } }) => (transparentize(0.5, colors.pageBackground))};
   border-radius: 50%;
+  z-index: 999;
 `;
 
 export default Cursor;
