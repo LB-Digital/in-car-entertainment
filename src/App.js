@@ -19,8 +19,12 @@ import Cursor from './components/atoms/Cursor';
 
 // *** pages ***
 const AllPages = import('./pages');
-const Home = React.lazy(() => AllPages.then(module => ({ default: module.Home })));
-const Music = React.lazy(() => AllPages.then(module => ({ default: module.Music })));
+const Home =
+    React.lazy(() => AllPages.then(module => ({ default: module.Home })));
+const Music =
+    React.lazy(() => AllPages.then(module => ({ default: module.Music })));
+const LowDistractionMode =
+    React.lazy(() => AllPages.then(module => ({ default: module.LowDistractionMode })));
 
 
 function App() {
@@ -33,6 +37,9 @@ function App() {
 
     // theme
     const [ themeType, setThemeType ] = React.useState('light');
+
+    // low distraction mode
+    const [ lowDistractionMode, setLowDistractionMode ] = React.useState(false);
 
 
     /* hooks */
@@ -50,7 +57,7 @@ function App() {
 
         // return cleanup func to remove event listener
         return () => window.removeEventListener('resize', handleResize);
-    });
+    }, []);
 
     const aspectRatio = (16/9);
 
@@ -79,13 +86,17 @@ function App() {
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
         }
-    });
+    }, []);
 
 
     /* handlers */
     // theme
     const handleToggleTheme = () =>
         setThemeType((themeType === 'light') ? 'dark' : 'light');
+
+    // low distraction mode
+    const handleToggleLowDistractionMode = () =>
+        setLowDistractionMode(!lowDistractionMode);
 
 
     /* render */
@@ -100,13 +111,23 @@ function App() {
             <GlobalStyle/>
 
             <HashRouter>
-                <Screen toggleTheme={handleToggleTheme}>
+                <Screen
+                    toggleTheme={handleToggleTheme}
+                    toggleLowDistractionMode={handleToggleLowDistractionMode}
+                    showStatusBar={!lowDistractionMode}
+                >
                     <Cursor className='cursor' />
                     <React.Suspense fallback={<p>Loading...</p>}>
-                        <Switch>
-                            <Route exact path={ROUTES.HOME} component={Home} />
-                            <Route exact path={ROUTES.MUSIC} component={Music} />
-                        </Switch>
+                        {lowDistractionMode ? (
+                            <LowDistractionMode
+                                toggleLowDistractionMode={handleToggleLowDistractionMode}
+                            />
+                        ) : (
+                            <Switch>
+                                <Route exact path={ROUTES.HOME} component={Home} />
+                                <Route exact path={ROUTES.MUSIC} component={Music} />
+                            </Switch>
+                        )}
                     </React.Suspense>
                 </Screen>
             </HashRouter>

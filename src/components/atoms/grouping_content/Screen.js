@@ -36,14 +36,25 @@ const ScreenContent = styled.div`
 `;
 
 
-const Screen = ({ toggleTheme, children }) => {
+const Screen = ({
+                    toggleTheme,
+                    toggleLowDistractionMode,
+                    showStatusBar,
+
+                    children
+}) => {
 
 
     return (
         <ScreenWrapper>
             <StyledScreen>
                 <ScreenContent>
-                    <StatusBar toggleTheme={toggleTheme} />
+                    {showStatusBar && (
+                        <StatusBar
+                            toggleTheme={toggleTheme}
+                            toggleLowDistractionMode={toggleLowDistractionMode}
+                        />
+                    )}
 
                     { children }
                 </ScreenContent>

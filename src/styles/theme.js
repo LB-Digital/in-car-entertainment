@@ -24,7 +24,7 @@ const fontSizes = (screenDimensions) => ({
     // p: '1rem',
     // small: '0.9rem',
 
-    h1: `${screenDimensions.width * 0.37}px`,
+    h1: `${screenDimensions.width * 0.1}px`,
     h2: `${screenDimensions.width * 0.025}px`,
     h3: `${screenDimensions.width * 0.018}px`,
 

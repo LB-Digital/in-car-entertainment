@@ -98,7 +98,7 @@ const USERS = {
     }
 };
 
-const UserSwitcher = () => {
+const _UserSwitcher = () => {
     /* state */
     const [ activeUser, setActiveUser ] = React.useState('USER_0');
     const [ dropdownOpen, setDropdownOpen ] = React.useState(false);
@@ -178,4 +178,4 @@ const UserSwitcher = () => {
     )
 };
 
-export default UserSwitcher;
+export default _UserSwitcher;
