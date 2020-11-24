@@ -8,7 +8,7 @@ import { functions } from '../../firebase';
 
 /* components */
 // atoms
-import { Header3 } from '../atoms/document_sections';
+import { Header3, Header2 } from '../atoms/document_sections';
 
 
 /* config */
@@ -24,14 +24,14 @@ const WeatherDisplayWrapper = styled('div')`
   align-items: center;
 `;
 
-const WeatherIcon = styled('img')`
-  width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * 0.03)}px;
+const WeatherIcon = styled(({ size, alt, ...props }) => <img alt={alt} {...props} />)`
+  width: ${({ size, theme: { iconSizes } }) => iconSizes[(size === 'lg') ? 'md' : 'sm']};
   
   margin-left: ${({ theme: { spacing } }) => (spacing.sm)};
 `;
 
 
-const _WeatherDisplay = () => {
+const _WeatherDisplay = ({ size }) => {
 
     /* utility methods */
     // get current weather
@@ -79,9 +79,13 @@ const _WeatherDisplay = () => {
         <WeatherDisplayWrapper>
             {weather && (
                 <>
-                    <Header3>{ weather.temp }&#8451;</Header3>
+                    {(size === 'lg') ? (
+                        <Header2>{ weather.temp }&#8451;</Header2>
+                    ) : (
+                        <Header3>{ weather.temp }&#8451;</Header3>
+                    )}
                     {weather.icon && (
-                        <WeatherIcon src={weather.icon} alt='current weather'/>
+                        <WeatherIcon src={weather.icon} alt='current weather' />
                     )}
                 </>
             )}

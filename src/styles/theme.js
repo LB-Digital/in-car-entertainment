@@ -32,8 +32,8 @@ const fontSizes = (screenDimensions) => ({
 });
 
 const iconSizes = (screenDimensions) => ({
-    sm: '24px',
-    md: `${screenDimensions.width * 0.03}px`,
+    sm: `${screenDimensions.width * 0.03}px`,
+    md: `${screenDimensions.width * 0.06}px`,
     lg: `${screenDimensions.width * 0.09}px`
 });
 

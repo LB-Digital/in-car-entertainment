@@ -55,7 +55,7 @@ const _LowDistractionMode = ({ toggleLowDistractionMode }) => {
 
             <LowDistModeContent>
                 <TimeDisplay size='lg' />
-                <WeatherDisplay/>
+                <WeatherDisplay size='lg' />
             </LowDistModeContent>
 
             <ExitHelpText>Press Anywhere to Exit</ExitHelpText>

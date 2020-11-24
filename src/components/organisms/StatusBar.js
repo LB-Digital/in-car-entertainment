@@ -64,13 +64,13 @@ const StatusBar = ({ toggleTheme, toggleLowDistractionMode }) => {
             </BarSection>
 
             <BarSection>
-                <EyeSlashIcon onClick={() => toggleLowDistractionMode()} size='md' />
+                <EyeSlashIcon onClick={() => toggleLowDistractionMode()} size='sm' />
 
                 <Link to={ROUTES.HOME}>
-                    <HomeIcon size='md' />
+                    <HomeIcon size='sm' />
                 </Link>
 
-                <AdjustIcon onClick={() => toggleTheme()} size='md' />
+                <AdjustIcon onClick={() => toggleTheme()} size='sm' />
             </BarSection>
 
 
