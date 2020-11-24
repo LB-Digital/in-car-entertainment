@@ -24,10 +24,30 @@ const StyledStatusBar = styled('div')`
 
 
 const StatusBar = () => {
-    const now = new Date();
-    const hours = now.getHours();
-    const mins = ('0' + now.getMinutes()).slice(-2);
-    const time = `${hours}:${mins}`;
+    // live time
+    const getCurrentTime = () => {
+        const now = new Date();
+        const hours = now.getHours();
+        const mins = ('0' + now.getMinutes()).slice(-2);
+
+        return `${hours}:${mins}`;
+    };
+
+    const [ time, setTime ] = React.useState(getCurrentTime());
+
+    // update time every second
+    React.useEffect(() => {
+        const timeInterval =
+            setInterval(() => setTime(getCurrentTime()), 1000);
+
+        return () => clearInterval(timeInterval);
+    });
+
+
+    // // live weather
+    // const getCurrentWeather = () => {
+    //
+    // };
 
 
     return (
