@@ -26,7 +26,7 @@ const StyledSplash = styled(React.forwardRef((
   transform: translate(-50%, -50%);
   width: ${({ theme: { screenDimensions, spacing } }) => (screenDimensions.width - (spacing.raw.md * 2))}px;
   height: ${({ theme: { screenDimensions, spacing } }) => (screenDimensions.height - (spacing.raw.md * 2))}px;
-  //z-index: 990;
+  z-index: 990;
   
   background: ${({ theme: { colors } }) => colors.dark};
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
