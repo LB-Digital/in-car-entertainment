@@ -15,3 +15,4 @@ export { default as ListMusicIcon } from './ListMusicIcon';
 export { default as AlbumCollectionIcon } from './AlbumCollectionIcon';
 export { default as UserMusicIcon } from './UserMusicIcon';
 export { default as ShuffleIcon } from './ShuffleIcon';
+export { default as WaveformIcon } from './WaveformIcon';

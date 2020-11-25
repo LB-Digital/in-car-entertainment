@@ -9,7 +9,9 @@ import * as ROUTES from '../../config/routes';
 
 /* components */
 // atoms
-import { ListMusicIcon, AlbumCollectionIcon, UserMusicIcon, ShuffleIcon } from '../../components/atoms/icons/solid';
+import {
+    ListMusicIcon, AlbumCollectionIcon, UserMusicIcon, ShuffleIcon, WaveformIcon
+} from '../../components/atoms/icons/solid';
 // organisms
 import { BigNav } from '../../components/organisms';
 
@@ -75,6 +77,13 @@ const _Music = () => {
                         color: theme.colors.dark,
                         icon: ShuffleIcon,
                         title: 'Shuffle All'
+                    },
+                    {
+                        onClick: () => history.push(ROUTES.MUSIC.NOW_PLAYING),
+                        bGround: theme.colors.white,
+                        color: theme.colors.dark,
+                        icon: WaveformIcon,
+                        title: 'Now Playing'
                     }
                 ]}
             />

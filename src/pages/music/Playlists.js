@@ -2,10 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 
-/* config */
-import * as ROUTES from '../../config/routes';
-
-
 /* assets */
 // img
 import chillPlaylistCover from '../../assets/img/music/playlists/chill-cover.jpg';
@@ -17,10 +13,8 @@ import christmasPlaylistCover from '../../assets/img/music/playlists/christmas-c
 
 
 /* components */
-// atoms
-import {AlbumCollectionIcon, ListMusicIcon, MusicIcon, UserMusicIcon} from '../../components/atoms/icons/solid';
 // organisms
-import { PlaylistsDisplay, VerticalNav } from '../../components/organisms';
+import { PlaylistsDisplay, MusicVerticalNav } from '../../components/organisms';
 
 
 /* styles */
@@ -41,19 +35,12 @@ const StyledPlaylists = styled('div')`
 `;
 
 
-const _Playlists = ({  }) => {
+const _Playlists = () => {
 
 
     return (
         <StyledPlaylists>
-            <VerticalNav
-                options={[
-                    { navTo: ROUTES.MUSIC.HOME, icon: MusicIcon, title: 'Music' },
-                    { navTo: ROUTES.MUSIC.PLAYLISTS, icon: ListMusicIcon, title: 'Playlists' },
-                    { navTo: ROUTES.MUSIC.HOME, icon: AlbumCollectionIcon, title: 'Albums' },
-                    { navTo: ROUTES.MUSIC.HOME, icon: UserMusicIcon, title: 'Artists' }
-                ]}
-            />
+            <MusicVerticalNav/>
 
             <PlaylistsDisplay
                 playlists={[
