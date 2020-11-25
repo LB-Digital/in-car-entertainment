@@ -113,7 +113,7 @@ const PlayerControls = styled('div')`
 
 const Tracks = [
     { title: 'Smile - Single', artist: 'Juicy World & The WeekDay', cover: smileCover },
-    { title: 'Lemonade (Remix)', artist: 'Internet Pounds, Ton Doliver & Richy Rod', cover: lemonadeCover },
+    { title: 'Lemonade (Remix)', artist: 'Internet Pounds & Richy Rod', cover: lemonadeCover },
     { title: 'Blackberry Faygo', artist: 'Big Mosey', cover: blackberryCover }
 ];
 const _NowPlaying = () => {
