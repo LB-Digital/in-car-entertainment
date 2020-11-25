@@ -36,6 +36,11 @@ const GlobalStyle = createGlobalStyle`
   //  flex-direction: column;
   //}
   
+  
+  a {
+    text-decoration: none;
+  }
+  
 `;
 
 

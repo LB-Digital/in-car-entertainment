@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 /* components */
 // atoms
-import { Strong } from '../atoms/text_level_semantics';
 import { Header3 } from '../atoms/document_sections';
 
 
@@ -21,6 +20,11 @@ const PlaylistItemWrapper = styled('div')`
 
 const StyledPlaylistItem = styled('div')`
   width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelPlaylistItemWidth)}px;
+  
+  padding: ${({ theme: { spacing } }) => spacing.sm};
+  
+  background: ${({ theme: { colors } }) => colors.white};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
 `;
 
 const PlaylistCover = styled(({ src, ...props }) => <div {...props} />)`
@@ -31,7 +35,7 @@ const PlaylistCover = styled(({ src, ...props }) => <div {...props} />)`
   
   background-image: url(${({ src }) => src});
   background-size: cover;
-  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
+  border-radius: ${({ theme: { borderRadius } }) => `${borderRadius} ${borderRadius} 0 0`};
 `;
 
 

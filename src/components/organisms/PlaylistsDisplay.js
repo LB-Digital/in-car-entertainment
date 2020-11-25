@@ -13,8 +13,9 @@ import { PlaylistItem } from '../molecules';
 // styled components
 const StyledPlaylistsDisplay = styled('div')`
   flex: 1;
+  height: 100%;
 
-  margin: ${({ theme: { spacing } }) => spacing.lg};
+  // margin: ${({ theme: { spacing } }) => spacing.lg};
   padding: ${({ theme: { spacing } }) => spacing.md};
   
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
