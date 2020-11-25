@@ -72,7 +72,7 @@ const _Music = () => {
 
                 secondaryOptions={[
                     {
-                        // onClick: () =>
+                        onClick: () => history.push(ROUTES.MUSIC.NOW_PLAYING),
                         bGround: theme.colors.white,
                         color: theme.colors.dark,
                         icon: ShuffleIcon,
