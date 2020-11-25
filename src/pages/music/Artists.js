@@ -4,7 +4,11 @@ import styled from 'styled-components';
 
 /* assets */
 // img
-
+import antarcticMonkeysAvatar from '../../assets/img/music/artists/antarctic-monkeys.jpg';
+import barryStylesAvatar from '../../assets/img/music/artists/barry-styles-avatar.jpg';
+import dcAcAvatar from '../../assets/img/music/artists/dc-ac-avatar.jpg';
+import macwoodFleetAvatar from '../../assets/img/music/artists/macwood-fleet-avatar.jpg';
+import theWeekdayAvatar from '../../assets/img/music/artists/the-weekday-avatar.jpg';
 
 
 /* components */
@@ -32,11 +36,11 @@ const StyledArtists = styled('div')`
 
 /* config */
 const ArtistItems = [
-    // { title: 'Thick Line', artist: 'Barry Styles', cover: thickLineCover },
-    // { title: 'Power Down', artist: 'DC/AC', cover: powerDownCover },
-    // { title: 'AM', artist: 'Antarctic Monkeys', cover: antarcticMonkeyCover },
-    // { title: 'After Hours', artist: 'The Weekday', cover: afterHoursCover },
-    // { title: 'Rumours', artist: 'Macwood Fleet', cover: rumoursCover }
+    { title: 'Bloody Royal', cover: antarcticMonkeysAvatar },
+    { title: 'Barry Styles', cover: barryStylesAvatar },
+    { title: 'DC/AC', cover: dcAcAvatar },
+    { title: 'Macwood Fleet', cover: macwoodFleetAvatar },
+    { title: 'The Weekday', cover: theWeekdayAvatar }
 ];
 
 
