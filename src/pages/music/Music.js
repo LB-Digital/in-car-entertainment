@@ -24,7 +24,7 @@ const StyledMusic = styled('div')`
   align-items: center;
   //flex-direction: column;
   
-  background: #C004D9;
+  background: ${({ theme: { colors } }) => colors.pages.music};
 `;
 
 
