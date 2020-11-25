@@ -38,6 +38,10 @@ const _Home = ({ navWithTransition }) => {
     const handleClickNavOption = async (navTo) => {
         if (navTo === 'MUSIC') {
             navWithTransition(ROUTES.MUSIC.HOME, theme.colors.pages.music, 'MUSIC', MusicIcon);
+        } else if (navTo === 'NAV') {
+            navWithTransition(ROUTES.NAV.HOME, theme.colors.pages.nav, 'NAV', RouteIcon);
+        } else if (navTo === 'CAR') {
+            navWithTransition(ROUTES.HOME, theme.colors.pages.car, 'CAR', CarIcon);
         }
     };
 
@@ -54,13 +58,13 @@ const _Home = ({ navWithTransition }) => {
                         title: 'MUSIC'
                     },
                     {
-                        // onClick: () =>
+                        onClick: () => handleClickNavOption('NAV'),
                         bGround: theme.colors.pages.nav,
                         icon: RouteIcon,
                         title: 'NAV'
                     },
                     {
-                        // onClick: () =>
+                        onClick: () => handleClickNavOption('CAR'),
                         bGround: theme.colors.pages.car,
                         icon: CarIcon,
                         title: 'CAR'

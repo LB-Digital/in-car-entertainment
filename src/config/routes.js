@@ -1,6 +1,9 @@
 // config/routes.js
 
 export const HOME = '/';
+export const NAV = {
+    HOME: '/nav'
+};
 export const MUSIC = {
     HOME: '/music',
     PLAYLISTS: '/music/playlists',

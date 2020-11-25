@@ -40,6 +40,10 @@ const Albums =
     React.lazy(() => MusicPages.then(module => ({ default: module.Albums })));
 const Artists =
     React.lazy(() => MusicPages.then(module => ({ default: module.Artists })));
+// nav
+const NavPages = import('./pages/nav/');
+const NavPage =
+    React.lazy(() => NavPages.then(module => ({ default: module.NavPage })));
 
 
 function App() {
@@ -237,11 +241,14 @@ function App() {
                                 path={ROUTES.HOME}
                                 component={() => <Home navWithTransition={navWithTransition} />}
                             />
+                            {/* music pages */}
                             <Route exact path={ROUTES.MUSIC.HOME} component={Music} />
                             <Route exact path={ROUTES.MUSIC.PLAYLISTS} component={Playlists} />
                             <Route exact path={ROUTES.MUSIC.NOW_PLAYING} component={NowPlaying} />
                             <Route exact path={ROUTES.MUSIC.ALBUMS} component={Albums} />
                             <Route exact path={ROUTES.MUSIC.ARTISTS} component={Artists} />
+                            {/* nav pages */}
+                            <Route exact path={ROUTES.NAV.HOME} component={NavPage} />
                         </Switch>
                     )}
                 </React.Suspense>
