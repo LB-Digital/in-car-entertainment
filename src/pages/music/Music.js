@@ -55,7 +55,7 @@ const _Music = () => {
                         title: 'Playlists'
                     },
                     {
-                        // onClick: () =>
+                        onClick: () => history.push(ROUTES.MUSIC.ALBUMS),
                         bGround: theme.colors.white,
                         color: theme.colors.dark,
                         icon: AlbumCollectionIcon,

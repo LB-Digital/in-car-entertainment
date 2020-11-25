@@ -23,7 +23,7 @@ const _MusicVerticalNav = () => {
                 { navTo: ROUTES.MUSIC.HOME, icon: MusicIcon, title: 'Music' },
                 { navTo: ROUTES.MUSIC.NOW_PLAYING, icon: WaveformIcon, title: 'Now Playing' },
                 { navTo: ROUTES.MUSIC.PLAYLISTS, icon: ListMusicIcon, title: 'Playlists' },
-                { navTo: ROUTES.MUSIC.HOME, icon: AlbumCollectionIcon, title: 'Albums' },
+                { navTo: ROUTES.MUSIC.ALBUMS, icon: AlbumCollectionIcon, title: 'Albums' },
                 { navTo: ROUTES.MUSIC.HOME, icon: UserMusicIcon, title: 'Artists' }
             ]}
         />

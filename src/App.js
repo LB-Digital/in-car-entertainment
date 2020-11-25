@@ -36,6 +36,8 @@ const Playlists =
     React.lazy(() => MusicPages.then(module => ({ default: module.Playlists })));
 const NowPlaying =
     React.lazy(() => MusicPages.then(module => ({ default: module.NowPlaying })));
+const Albums =
+    React.lazy(() => MusicPages.then(module => ({ default: module.Albums })));
 
 
 function App() {
@@ -236,6 +238,7 @@ function App() {
                             <Route exact path={ROUTES.MUSIC.HOME} component={Music} />
                             <Route exact path={ROUTES.MUSIC.PLAYLISTS} component={Playlists} />
                             <Route exact path={ROUTES.MUSIC.NOW_PLAYING} component={NowPlaying} />
+                            <Route exact path={ROUTES.MUSIC.ALBUMS} component={Albums} />
                         </Switch>
                     )}
                 </React.Suspense>
