@@ -62,7 +62,7 @@ const _Music = () => {
                         title: 'Albums'
                     },
                     {
-                        // onClick: () =>
+                        onClick: () => history.push(ROUTES.MUSIC.ARTISTS),
                         bGround: theme.colors.white,
                         color: theme.colors.dark,
                         icon: UserMusicIcon,
