@@ -57,6 +57,14 @@ const cursor = (screenDimensions) => ({
 
 // *** split styles (light/dark) ***
 const colors = {
+    default: {
+        pages: {
+            music: '#C004D9',
+            nav: '#5A13F2',
+            car: '#138AF2'
+        }
+    },
+
     light: {
         pageBackground: '#000',
         screenBackground: '#eee',
@@ -86,18 +94,33 @@ const baseTheme = (screenDimensions) => ({
     iconSizes: iconSizes(screenDimensions),
     fontWeights,
     cursor: cursor(screenDimensions),
+    colors: colors.default,
 
     borderRadius: `${screenDimensions.width * 0.007}px`
 });
 
-export const lightTheme = (screenDimensions) => ({
-    ...baseTheme(screenDimensions),
+export const lightTheme = (screenDimensions) => {
+    const theme = baseTheme(screenDimensions);
 
-    colors: colors.light
-});
+    return {
+        ...theme,
 
-export const darkTheme = (screenDimensions) => ({
-    ...baseTheme(screenDimensions),
+        colors: {
+            ...theme.colors,
+            ...colors.light
+        }
+    };
+};
 
-    colors: colors.dark
-});
+export const darkTheme = (screenDimensions) => {
+    const theme = baseTheme(screenDimensions);
+
+    return {
+        ...theme,
+
+        colors: {
+            ...theme.colors,
+            ...colors.dark
+        }
+    };
+};

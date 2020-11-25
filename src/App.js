@@ -22,13 +22,18 @@ import { PageTransition, Splash } from './components/molecules';
 
 
 // *** pages ***
-const AllPages = import('./pages');
+// main
+const MainPages = import('./pages/');
 const Home =
-    React.lazy(() => AllPages.then(module => ({ default: module.Home })));
-const Music =
-    React.lazy(() => AllPages.then(module => ({ default: module.Music })));
+    React.lazy(() => MainPages.then(module => ({ default: module.Home })));
 const LowDistractionMode =
-    React.lazy(() => AllPages.then(module => ({ default: module.LowDistractionMode })));
+    React.lazy(() => MainPages.then(module => ({ default: module.LowDistractionMode })));
+// music
+const MusicPages = import('./pages/music/');
+const Music =
+    React.lazy(() => MusicPages.then(module => ({ default: module.Music })));
+const Playlists =
+    React.lazy(() => MusicPages.then(module => ({ default: module.Playlists })));
 
 
 function App() {
@@ -226,7 +231,8 @@ function App() {
                                 path={ROUTES.HOME}
                                 component={() => <Home navWithTransition={navWithTransition} />}
                             />
-                            <Route exact path={ROUTES.MUSIC} component={Music} />
+                            <Route exact path={ROUTES.MUSIC.HOME} component={Music} />
+                            <Route exact path={ROUTES.MUSIC.PLAYLISTS} component={Playlists} />
                         </Switch>
                     )}
                 </React.Suspense>

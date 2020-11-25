@@ -1,12 +1,17 @@
 import * as React from 'react';
 import styled, { useTheme } from 'styled-components';
+import { useHistory } from 'react-router-dom';
+
+
+/* config */
+import * as ROUTES from '../../config/routes';
 
 
 /* components */
 // atoms
-import { ListMusicIcon, AlbumCollectionIcon, UserMusicIcon, ShuffleIcon } from '../components/atoms/icons/solid';
+import { ListMusicIcon, AlbumCollectionIcon, UserMusicIcon, ShuffleIcon } from '../../components/atoms/icons/solid';
 // organisms
-import { BigNav } from '../components/organisms';
+import { BigNav } from '../../components/organisms';
 
 
 /* styles */
@@ -30,6 +35,9 @@ const _Music = () => {
     // styled-components
     const theme = useTheme();
 
+    // react-router-dom
+    const history = useHistory();
+
 
     /* render */
 
@@ -38,7 +46,7 @@ const _Music = () => {
             <BigNav
                 primaryOptions={[
                     {
-                        // onClick: () =>
+                        onClick: () => history.push(ROUTES.MUSIC.PLAYLISTS),
                         bGround: theme.colors.white,
                         color: theme.colors.dark,
                         icon: ListMusicIcon,

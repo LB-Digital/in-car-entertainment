@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 
 /* config */
@@ -28,11 +28,16 @@ const StyledHome = styled('div')`
 // Home page
 const _Home = ({ navWithTransition }) => {
 
+    /* hooks */
+    // styled-components
+    const theme = useTheme();
+
+
     /* UI event handlers */
     // on click
     const handleClickNavOption = async (navTo) => {
         if (navTo === 'MUSIC') {
-            navWithTransition(ROUTES.MUSIC, '#C004D9', 'MUSIC', MusicIcon);
+            navWithTransition(ROUTES.MUSIC.HOME, theme.colors.pages.music, 'MUSIC', MusicIcon);
         }
     };
 
@@ -44,19 +49,19 @@ const _Home = ({ navWithTransition }) => {
                 primaryOptions={[
                     {
                         onClick: () => handleClickNavOption('MUSIC'),
-                        bGround: '#C004D9',
+                        bGround: theme.colors.pages.music,
                         icon: MusicIcon,
                         title: 'MUSIC'
                     },
                     {
                         // onClick: () =>
-                        bGround: '#5A13F2',
+                        bGround: theme.colors.pages.nav,
                         icon: RouteIcon,
                         title: 'NAV'
                     },
                     {
                         // onClick: () =>
-                        bGround: '#138AF2',
+                        bGround: theme.colors.pages.car,
                         icon: CarIcon,
                         title: 'CAR'
                     }
