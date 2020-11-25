@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
 
 // *** styles ***
@@ -46,9 +47,13 @@ function App() {
 
     // page transition
     const [ pageTransition, setPageTransition ] = React.useState(null);
+    const [ pageTransitionIn, setPageTransitionIn ] = React.useState(false);
 
 
     /* hooks */
+    // react-router-dom
+    const history = useHistory();
+
     // effects
     React.useEffect(() => {
         const handleResize = () =>
@@ -107,14 +112,24 @@ function App() {
 
     // page transition
     const navWithTransition = async (navTo, color, title, icon) => {
-        console.log(`navWithTransition(${navTo})`);
+        // console.log(`navWithTransition(${navTo}, ${color}, ${title}, icon:${!!icon})`);
 
         setPageTransition({ navTo, color, title, icon });
+        setPageTransitionIn(true);
     };
 
-    const handlePageTransitionEnd = () => {
-        console.log('page transition ended!!');
+    const handlePageTransitionEntered = () => {
+        // console.log('handlePageTransitionEntered()');
 
+        // route to new path
+        history.push(pageTransition.navTo);
+
+        // begin transition exit
+        setPageTransitionIn(false);
+    };
+
+    const handlePageTransitionExited = () => {
+        // clear state of prev transition
         setPageTransition(null);
     };
 
@@ -130,39 +145,44 @@ function App() {
         >
             <GlobalStyle/>
 
-            <HashRouter>
-                <Screen
-                    toggleTheme={handleToggleTheme}
-                    toggleLowDistractionMode={handleToggleLowDistractionMode}
-                    showStatusBar={!lowDistractionMode}
+            <Screen
+                toggleTheme={handleToggleTheme}
+                toggleLowDistractionMode={handleToggleLowDistractionMode}
+                showStatusBar={!lowDistractionMode}
+            >
+                <Cursor className='cursor' />
+
+                <CSSTransition
+                    in={pageTransitionIn}
+                    timeout={{ enter: 600, exit: 200 }}
+                    classNames='page-transition'
+                    mountOnEnter
+                    unmountOnExit
+                    onEntered={() => handlePageTransitionEntered()}
+                    onExited={() => handlePageTransitionExited()}
                 >
-                    <Cursor className='cursor' />
+                    <PageTransition
+                        {...pageTransition}
+                    />
+                </CSSTransition>
 
-                    {pageTransition && (
-                        <PageTransition
-                            onPageTransitionEnd={handlePageTransitionEnd}
-                            {...pageTransition}
+                <React.Suspense fallback={<p>Loading...</p>}>
+                    {lowDistractionMode ? (
+                        <LowDistractionMode
+                            toggleLowDistractionMode={handleToggleLowDistractionMode}
                         />
-                    )}
-
-                    <React.Suspense fallback={<p>Loading...</p>}>
-                        {lowDistractionMode ? (
-                            <LowDistractionMode
-                                toggleLowDistractionMode={handleToggleLowDistractionMode}
+                    ) : (
+                        <Switch>
+                            <Route
+                                exact
+                                path={ROUTES.HOME}
+                                component={() => <Home navWithTransition={navWithTransition} />}
                             />
-                        ) : (
-                            <Switch>
-                                <Route
-                                    exact
-                                    path={ROUTES.HOME}
-                                    component={() => <Home navWithTransition={navWithTransition} />}
-                                />
-                                <Route exact path={ROUTES.MUSIC} component={Music} />
-                            </Switch>
-                        )}
-                    </React.Suspense>
-                </Screen>
-            </HashRouter>
+                            <Route exact path={ROUTES.MUSIC} component={Music} />
+                        </Switch>
+                    )}
+                </React.Suspense>
+            </Screen>
         </ThemeProvider>
     );
 }
