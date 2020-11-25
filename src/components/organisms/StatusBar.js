@@ -49,7 +49,7 @@ const BarSection = styled('div')`
 `;
 
 const InfoSection = styled((props) => <BarSection {...props} />)`
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelInfoSectionWidth)}px;
 `;
 
