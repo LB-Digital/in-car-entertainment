@@ -54,6 +54,9 @@ function App() {
     // react-router-dom
     const history = useHistory();
 
+    // refs
+    const pageTransitionRef = React.useRef(null);
+
     // effects
     React.useEffect(() => {
         const handleResize = () =>
@@ -160,8 +163,10 @@ function App() {
                     unmountOnExit
                     onEntered={() => handlePageTransitionEntered()}
                     onExited={() => handlePageTransitionExited()}
+                    nodeRef={pageTransitionRef}
                 >
                     <PageTransition
+                        ref={pageTransitionRef}
                         {...pageTransition}
                     />
                 </CSSTransition>

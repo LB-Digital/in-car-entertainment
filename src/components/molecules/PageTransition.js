@@ -80,18 +80,18 @@ const PageTransitionTitle = styled((props) => <Header2 {...props} />)`
 `;
 
 
-const _PageTransition = ({ color, title, icon: Icon }) => {
+const _PageTransition = React.forwardRef(({ color, title, icon: Icon }, ref) => {
 
 
     /* render */
     return (
-        <StyledPageTransition color={color}>
+        <StyledPageTransition color={color} ref={ref}>
             <PageTransitionContent>
                 <Icon size='lg' />
                 <PageTransitionTitle>{ title }</PageTransitionTitle>
             </PageTransitionContent>
         </StyledPageTransition>
     )
-};
+});
 
 export default _PageTransition;
