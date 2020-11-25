@@ -8,3 +8,6 @@ export { default as CarIcon } from './CarIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as AdjustIcon } from './AdjustIcon';
 export { default as EyeSlashIcon } from './EyeSlashIcon';
+export { default as SeatBeltIcon } from './SeatBeltIcon';
+export { default as TachometerIcon } from './TachometerIcon';
+export { default as WineBottleIcon } from './WineBottleIcon';

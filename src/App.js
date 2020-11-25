@@ -18,7 +18,7 @@ import * as ROUTES from './config/routes';
 import { Screen } from './components/atoms/grouping_content';
 import Cursor from './components/atoms/Cursor';
 // molecules
-import { PageTransition } from './components/molecules';
+import { PageTransition, Splash } from './components/molecules';
 
 
 // *** pages ***
@@ -32,12 +32,30 @@ const LowDistractionMode =
 
 
 function App() {
-    /* state */
+
+    /* utilities */
     // screen dimensions
-    const [ dimensions, setDimensions ] = React.useState({
-        width: window.innerWidth,
-        height: window.innerHeight
-    });
+    const getScreenDimensions = () => {
+        const aspectRatio = 16/9;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        let newScreenDimensions = {
+            width: windowWidth,
+            height: windowWidth / aspectRatio
+        };
+        if (newScreenDimensions.height > windowHeight) {
+            newScreenDimensions.height = windowHeight;
+            newScreenDimensions.width = newScreenDimensions.height * aspectRatio;
+        }
+
+        return newScreenDimensions;
+    };
+
+
+    /* hooks:state */
+    // screen dimensions
+    const [ screenDimensions, setScreenDimensions ] = React.useState(getScreenDimensions());
 
     // theme
     const [ themeType, setThemeType ] = React.useState('light');
@@ -49,21 +67,28 @@ function App() {
     const [ pageTransition, setPageTransition ] = React.useState(null);
     const [ pageTransitionIn, setPageTransitionIn ] = React.useState(false);
 
+    // splash screen
+    const [ splashIn, setSplashIn ] = React.useState(true);
+
 
     /* hooks */
     // react-router-dom
     const history = useHistory();
 
-    // refs
+    /* hooks:refs */
+    // page transition
     const pageTransitionRef = React.useRef(null);
 
-    // effects
+    // splash
+    const splashRef = React.useRef(null);
+
+
+    /* hooks:effect */
+    // window resize
     React.useEffect(() => {
-        const handleResize = () =>
-            setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
-            });
+        const handleResize = () => {
+            setScreenDimensions(getScreenDimensions());
+        };
 
         // attach event listener for window resize
         window.addEventListener('resize', handleResize);
@@ -73,20 +98,7 @@ function App() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const aspectRatio = (16/9);
-
-    let screenDimensions = {
-        width: dimensions.width,
-        height: dimensions.width / aspectRatio
-    };
-    if (screenDimensions.height > dimensions.height) {
-        screenDimensions.height = dimensions.height;
-        screenDimensions.width = screenDimensions.height * aspectRatio;
-    }
-
-    // console.log(screenDimensions);
-
-
+    // cursor positioning
     React.useEffect(() => {
         const cursor = document.querySelector('.cursor');
 
@@ -114,7 +126,7 @@ function App() {
         setLowDistractionMode(!lowDistractionMode);
 
     // page transition
-    const navWithTransition = async (navTo, color, title, icon) => {
+    const navWithTransition = (navTo, color, title, icon) => {
         // console.log(`navWithTransition(${navTo}, ${color}, ${title}, icon:${!!icon})`);
 
         setPageTransition({ navTo, color, title, icon });
@@ -136,6 +148,19 @@ function App() {
         setPageTransition(null);
     };
 
+    // splash
+    const handleSplashEntered = () => {
+        console.log(`handleSplashEntered()`);
+
+        setSplashIn(false);
+    };
+
+    const handleSplashExited = () => {
+        console.log(`handleSplashExited()`);
+
+
+    };
+
 
     /* render */
     const theme = (themeType === 'light')
@@ -148,12 +173,30 @@ function App() {
         >
             <GlobalStyle/>
 
+
+
+
             <Screen
                 toggleTheme={handleToggleTheme}
                 toggleLowDistractionMode={handleToggleLowDistractionMode}
                 showStatusBar={!lowDistractionMode}
             >
                 <Cursor className='cursor' />
+
+                <CSSTransition
+                    in={splashIn}
+                    timeout={{ enter: 2500, exit: 400 }}
+                    classNames='splash'
+                    // mountOnEnter
+                    unmountOnExit
+                    onEntered={() => handleSplashEntered()}
+                    onExited={() => handleSplashExited()}
+                    nodeRef={splashRef}
+                    appear={true}
+                    // enter={false}
+                >
+                    <Splash ref={splashRef} />
+                </CSSTransition>
 
                 <CSSTransition
                     in={pageTransitionIn}
