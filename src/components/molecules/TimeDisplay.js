@@ -39,14 +39,14 @@ const _TimeDisplay = ({ size }) => {
     /* render */
     return (size === 'lg') ? (
         <Header1>
-            { time.hours }:
-            {/*<span style={{ opacity: (time.secs % 2 === 0) ? 0 : 1 }}>:</span>*/}
+            { time.hours }
+            <span style={{ opacity: (time.secs % 2 === 0) ? 0.3 : 1 }}>:</span>
             { time.mins }
         </Header1>
     ) : (
         <Header3>
-            { time.hours }:
-            {/*<span style={{ opacity: (time.secs % 2 === 0) ? 0 : 1 }}>:</span>*/}
+            { time.hours }
+            <span style={{ opacity: (time.secs % 2 === 0) ? 0.3 : 1 }}>:</span>
             { time.mins }
         </Header3>
     );
