@@ -13,8 +13,11 @@ const _TimeDisplay = ({ size }) => {
         const now = new Date();
         const hours = now.getHours();
         const mins = ('0' + now.getMinutes()).slice(-2);
+        const secs = now.getSeconds();
 
-        return `${hours}:${mins}`;
+        return { hours, mins, secs };
+
+        // return `${hours}:${mins}`;
     };
 
 
@@ -23,8 +26,8 @@ const _TimeDisplay = ({ size }) => {
     const [ time, setTime ] = React.useState(getCurrentTime());
 
 
-    /* hooks */
-    // effects
+    /* hooks:effect */
+    // update time every second
     React.useEffect(() => {
         const timeInterval =
             setInterval(() => setTime(getCurrentTime()), 1000);
@@ -35,9 +38,17 @@ const _TimeDisplay = ({ size }) => {
 
     /* render */
     return (size === 'lg') ? (
-        <Header1>{ time }</Header1>
+        <Header1>
+            { time.hours }:
+            {/*<span style={{ opacity: (time.secs % 2 === 0) ? 0 : 1 }}>:</span>*/}
+            { time.mins }
+        </Header1>
     ) : (
-        <Header3>{ time }</Header3>
+        <Header3>
+            { time.hours }:
+            {/*<span style={{ opacity: (time.secs % 2 === 0) ? 0 : 1 }}>:</span>*/}
+            { time.mins }
+        </Header3>
     );
 };
 
