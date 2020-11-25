@@ -5,7 +5,7 @@ import { transparentize } from 'polished';
 
 /* components */
 // atoms
-import { Header1, Header2, Header3 } from '../atoms/document_sections';
+import { Header2 } from '../atoms/document_sections';
 import { Strong } from '../atoms/text_level_semantics';
 import { SeatBeltIcon, TachometerIcon, WineBottleIcon } from '../atoms/icons/solid';
 
@@ -119,7 +119,7 @@ const _Splash = React.forwardRef((
                         <SplashInfoIconWrapper>
                             <SeatBeltIcon />
                         </SplashInfoIconWrapper>
-                        <SplashInfoText>Wear your Seatbelt</SplashInfoText>
+                        <SplashInfoText>Wear your Seat Belt</SplashInfoText>
                     </SplashInfoCol>
 
                     <SplashInfoCol>
