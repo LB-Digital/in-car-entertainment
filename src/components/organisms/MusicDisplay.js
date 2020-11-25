@@ -31,12 +31,12 @@ const ItemsWrapper = styled('div')`
 `;
 
 
-const _MusicDisplay = ({ items }) => {
+const _MusicDisplay = ({ title, items }) => {
 
 
     return (
         <StyledMusicDisplay>
-            <Header2>Playlists</Header2>
+            <Header2>{ title }</Header2>
 
             <ItemsWrapper>
                 {items && (

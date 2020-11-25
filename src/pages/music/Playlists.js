@@ -43,6 +43,7 @@ const _Playlists = () => {
             <MusicVerticalNav/>
 
             <MusicDisplay
+                title='Playlists'
                 items={[
                     {
                         title: 'Chill',

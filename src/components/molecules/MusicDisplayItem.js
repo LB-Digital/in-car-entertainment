@@ -5,6 +5,7 @@ import styled from 'styled-components';
 /* components */
 // atoms
 import { Header3 } from '../atoms/document_sections';
+import { Strong } from '../atoms/text_level_semantics';
 
 
 /* styles */
@@ -39,7 +40,7 @@ const PlaylistCover = styled(({ src, ...props }) => <div {...props} />)`
 `;
 
 
-const _PlaylistItem = ({ title, cover }) => {
+const _PlaylistItem = ({ title, artist, cover }) => {
 
 
     return (
@@ -47,6 +48,9 @@ const _PlaylistItem = ({ title, cover }) => {
             <StyledPlaylistItem>
                 <PlaylistCover src={cover} />
                 <Header3>{ title }</Header3>
+                {artist && (
+                    <Strong>{ artist }</Strong>
+                )}
             </StyledPlaylistItem>
         </PlaylistItemWrapper>
     )
