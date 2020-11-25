@@ -16,3 +16,7 @@ export { default as AlbumCollectionIcon } from './AlbumCollectionIcon';
 export { default as UserMusicIcon } from './UserMusicIcon';
 export { default as ShuffleIcon } from './ShuffleIcon';
 export { default as WaveformIcon } from './WaveformIcon';
+export { default as PlayIcon } from './PlayIcon';
+export { default as ForwardIcon } from './ForwardIcon';
+export { default as BackwardIcon } from './BackwardIcon';
+export { default as PauseIcon } from './PauseIcon';
