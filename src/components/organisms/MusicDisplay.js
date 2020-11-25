@@ -6,23 +6,22 @@ import styled from 'styled-components';
 // atoms
 import { Header2 } from '../atoms/document_sections';
 // molecules
-import { PlaylistItem } from '../molecules';
+import { MusicDisplayItem } from '../molecules';
 
 
 /* styles */
 // styled components
-const StyledPlaylistsDisplay = styled('div')`
+const StyledMusicDisplay = styled('div')`
   flex: 1;
   height: 100%;
 
-  // margin: ${({ theme: { spacing } }) => spacing.lg};
   padding: ${({ theme: { spacing } }) => spacing.md};
   
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   background: ${({ theme: { colors } }) => colors.screenBackground};
 `;
 
-const PlaylistsWrapper = styled('div')`
+const ItemsWrapper = styled('div')`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -32,25 +31,25 @@ const PlaylistsWrapper = styled('div')`
 `;
 
 
-const _PlaylistsDisplay = ({ playlists }) => {
+const _MusicDisplay = ({ items }) => {
 
 
     return (
-        <StyledPlaylistsDisplay>
+        <StyledMusicDisplay>
             <Header2>Playlists</Header2>
 
-            <PlaylistsWrapper>
-                {playlists && (
-                    playlists.map((playlist, index) => (
-                        <PlaylistItem
-                            key={`playlist-${index}`}
-                            {...playlist}
+            <ItemsWrapper>
+                {items && (
+                    items.map((item, index) => (
+                        <MusicDisplayItem
+                            key={`music-item-${index}`}
+                            {...item}
                         />
                     ))
                 )}
-            </PlaylistsWrapper>
-        </StyledPlaylistsDisplay>
+            </ItemsWrapper>
+        </StyledMusicDisplay>
     )
 };
 
-export default _PlaylistsDisplay;
+export default _MusicDisplay;

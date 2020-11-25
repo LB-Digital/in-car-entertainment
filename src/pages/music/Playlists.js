@@ -14,7 +14,7 @@ import christmasPlaylistCover from '../../assets/img/music/playlists/christmas-c
 
 /* components */
 // organisms
-import { PlaylistsDisplay, MusicVerticalNav } from '../../components/organisms';
+import { MusicDisplay, MusicVerticalNav } from '../../components/organisms';
 
 
 /* styles */
@@ -42,8 +42,8 @@ const _Playlists = () => {
         <StyledPlaylists>
             <MusicVerticalNav/>
 
-            <PlaylistsDisplay
-                playlists={[
+            <MusicDisplay
+                items={[
                     {
                         title: 'Chill',
                         cover: chillPlaylistCover
