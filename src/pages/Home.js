@@ -6,16 +6,14 @@ import styled from 'styled-components';
 import * as ROUTES from '../config/routes';
 
 
-// *** atoms ***
-import { Header2, Header3 } from '../components/atoms/document_sections';
+/* components */
+// atoms
 import { MusicIcon, RouteIcon, PhoneIcon, CommentsIcon, CogIcon, CarIcon } from '../components/atoms/icons/solid';
+// organisms
+import { BigNav } from '../components/organisms';
 
 
-// *** styled ***
-// config
-const RelNavOptionSize = 0.2;
-const RelNavOptionSizeSmall = 0.12;
-
+/* styles */
 // components
 const StyledHome = styled('div')`
   flex: 1;
@@ -25,65 +23,6 @@ const StyledHome = styled('div')`
   align-items: center;
   flex-direction: column;
 `;
-
-const HomeNav = styled('div')`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-`;
-
-const HomeNavOption = styled(
-    React.forwardRef(
-        (
-            { small, ...props },
-            ref
-        ) => ( <div ref={ref} {...props} /> )
-    ))`
-  width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelNavOptionSize)}px;
-  height: ${({ small, theme: { screenDimensions } }) =>
-    (screenDimensions.width * (
-        small
-            ? RelNavOptionSizeSmall
-            : RelNavOptionSize
-    ))}px;
-
-  padding: ${({ theme: { spacing } }) => (spacing.md)};
-`;
-
-
-const HomeNavOptionContent = styled('div')`
-  //height: 20vw;
-  width: 100%;
-  height: 100%;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  
-  padding: ${({ theme: { spacing } }) => (spacing.md)};
-
-  border-radius: ${({ theme: { borderRadius } }) => (borderRadius)};
-  
-  svg {
-    fill: #fff;
-  }
-`;
-
-const HomeNavOptionTitle = styled(({ small, ...props }) => (
-    small
-        ? <Header3 {...props} />
-        : <Header2 {...props} />
-))`
-  margin-top: ${({ theme: { spacing } }) => spacing.md};
-
-  text-transform: uppercase;
-  text-align: center;
-  color: #fff;
-`;
-
 
 
 // Home page
@@ -101,54 +40,51 @@ const _Home = ({ navWithTransition }) => {
     /* render */
     return (
         <StyledHome>
+            <BigNav
+                primaryOptions={[
+                    {
+                        onClick: () => handleClickNavOption('MUSIC'),
+                        bGround: '#C004D9',
+                        icon: MusicIcon,
+                        title: 'MUSIC'
+                    },
+                    {
+                        // onClick: () =>
+                        bGround: '#5A13F2',
+                        icon: RouteIcon,
+                        title: 'NAV'
+                    },
+                    {
+                        // onClick: () =>
+                        bGround: '#138AF2',
+                        icon: CarIcon,
+                        title: 'CAR'
+                    }
+                ]}
 
-            <HomeNav>
-                <HomeNavOption onClick={() => handleClickNavOption('MUSIC')}>
-                    <HomeNavOptionContent style={{ background: '#C004D9' }}>
-                        <MusicIcon size='lg' />
-                        <HomeNavOptionTitle>Music</HomeNavOptionTitle>
-                    </HomeNavOptionContent>
-                </HomeNavOption>
-
-                <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#5A13F2' }}>
-                        <RouteIcon size='lg' />
-                        <HomeNavOptionTitle>Nav</HomeNavOptionTitle>
-                    </HomeNavOptionContent>
-                </HomeNavOption>
-
-                <HomeNavOption>
-                    <HomeNavOptionContent style={{ background: '#138AF2' }}>
-                        <CarIcon size='lg' />
-                        <HomeNavOptionTitle>Car</HomeNavOptionTitle>
-                    </HomeNavOptionContent>
-                </HomeNavOption>
-            </HomeNav>
-
-            <HomeNav>
-                <HomeNavOption small={true}>
-                    <HomeNavOptionContent style={{ background: '#333' }}> {/* 8338ec */}
-                        <PhoneIcon size='lg' />
-                        <HomeNavOptionTitle small={true}>Phone</HomeNavOptionTitle>
-                    </HomeNavOptionContent>
-                </HomeNavOption>
-
-                <HomeNavOption small={true}>
-                    <HomeNavOptionContent style={{ background: '#333' }}> {/* fb5607 */}
-                        <CommentsIcon size='lg' />
-                        <HomeNavOptionTitle small={true}>Messages</HomeNavOptionTitle>
-                    </HomeNavOptionContent>
-                </HomeNavOption>
-
-                <HomeNavOption small={true}>
-                    <HomeNavOptionContent style={{ background: '#333' }}>
-                        <CogIcon size='lg' />
-                        <HomeNavOptionTitle small={true}>Settings</HomeNavOptionTitle>
-                    </HomeNavOptionContent>
-                </HomeNavOption>
-            </HomeNav>
+                secondaryOptions={[
+                    {
+                        // onClick: () =>
+                        bGround: '#333',
+                        icon: PhoneIcon,
+                        title: 'PHONE'
+                    },
+                    {
+                        // onClick: () =>
+                        bGround: '#333',
+                        icon: CommentsIcon,
+                        title: 'MESSAGES'
+                    },
+                    {
+                        // onClick: () =>
+                        bGround: '#333',
+                        icon: CogIcon,
+                        title: 'SETTINGS'
+                    }
+                ]}
+            />
         </StyledHome>
-    )
+    );
 };
 
 export default _Home;

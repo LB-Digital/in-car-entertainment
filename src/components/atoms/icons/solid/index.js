@@ -11,3 +11,7 @@ export { default as EyeSlashIcon } from './EyeSlashIcon';
 export { default as SeatBeltIcon } from './SeatBeltIcon';
 export { default as TachometerIcon } from './TachometerIcon';
 export { default as WineBottleIcon } from './WineBottleIcon';
+export { default as ListMusicIcon } from './ListMusicIcon';
+export { default as AlbumCollectionIcon } from './AlbumCollectionIcon';
+export { default as UserMusicIcon } from './UserMusicIcon';
+export { default as ShuffleIcon } from './ShuffleIcon';
