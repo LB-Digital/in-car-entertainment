@@ -22,8 +22,8 @@ import { Text } from '../atoms/grouping_content';
 
 /* styled */
 // config
-const RelSwitcherWidth = 0.138;
-const RelSwitcherDropdownWidth = 0.15;
+const RelSwitcherWidth = 0.168;
+const RelSwitcherDropdownWidth = 0.1799;
 const RelAvatarSize = 0.035;
 
 // components

@@ -17,7 +17,7 @@ import { UserSwitcher, TimeDisplay, WeatherDisplay } from '../molecules';
 
 /* styles */
 // config
-const RelInfoSectionWidth = 0.17;
+const RelInfoSectionWidth = 0.18;
 
 // styled components
 const StyledStatusBar = styled('div')`
