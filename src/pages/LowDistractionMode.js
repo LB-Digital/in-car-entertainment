@@ -7,7 +7,7 @@ import { transparentize } from 'polished';
 // atoms
 import { Strong } from '../components/atoms/text_level_semantics';
 // molecules
-import { TimeDisplay, WeatherDisplay } from '../components/molecules';
+import { TimeDisplay, WeatherDisplay, NowPlayingDisplay } from '../components/molecules';
 
 
 /* styled */
@@ -24,9 +24,12 @@ const StyledLowDistMode = styled('div')`
 `;
 
 const LowDistModeContent = styled('div')`
+  flex: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 `;
 
 const ExitHelpText = styled((props) => <Strong {...props} />)`
@@ -54,8 +57,9 @@ const _LowDistractionMode = ({ toggleLowDistractionMode }) => {
             <div/>
 
             <LowDistModeContent>
-                <TimeDisplay size='lg' />
                 <WeatherDisplay size='lg' />
+                <TimeDisplay size='lg' />
+                <NowPlayingDisplay/>
             </LowDistModeContent>
 
             <ExitHelpText>Press Anywhere to Exit</ExitHelpText>

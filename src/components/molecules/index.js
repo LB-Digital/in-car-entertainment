@@ -7,3 +7,4 @@ export { default as Splash } from './Splash';
 export { default as BigNavOption } from './BigNavOption';
 export { default as MusicDisplayItem } from './MusicDisplayItem';
 export { default as VerticalNavOption } from './VerticalNavOption';
+export { default as NowPlayingDisplay } from './NowPlayingDisplay';

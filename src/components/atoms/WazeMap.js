@@ -3,8 +3,22 @@ import styled from 'styled-components';
 import { stringify as qsStringify } from 'query-string';
 
 
+/* components */
+// atoms
+import { Spinner } from './index';
+
+
 /* styles */
 // styled components
+const WazeMapWrapper = styled('div')`
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledWazeMap = styled('iframe')`
   width: 100%;
   height: 100%;
@@ -22,6 +36,9 @@ const _WazeMap = ({ zoom, lat, lon, pin }) => {
     // map source
     const [ mapSrc, setMapSrc ] = React.useState(null);
 
+    // map loaded
+    const [ mapIsLoaded, setMapIsLoaded ] = React.useState(false);
+
 
     /* hooks:effects */
     // map source
@@ -38,8 +55,19 @@ const _WazeMap = ({ zoom, lat, lon, pin }) => {
     }, [ zoom, lat, lon, pin ]);
 
 
+    /* render */
     return (
-        <StyledWazeMap src={mapSrc} />
+        <WazeMapWrapper>
+            {!mapIsLoaded && (
+                <Spinner/>
+            )}
+
+            <StyledWazeMap
+                onLoad={() => setMapIsLoaded(true)}
+                src={mapSrc}
+                style={{ display: (mapIsLoaded ? null : 'none') }}
+            />
+        </WazeMapWrapper>
     )
 };
 
