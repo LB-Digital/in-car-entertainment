@@ -2,7 +2,8 @@
 
 export const HOME = '/';
 export const NAV = {
-    HOME: '/nav'
+    HOME: '/nav',
+    SEARCH: '/nav/search'
 };
 export const MUSIC = {
     HOME: '/music',

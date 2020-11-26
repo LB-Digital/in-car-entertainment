@@ -21,3 +21,4 @@ export { default as ForwardIcon } from './ForwardIcon';
 export { default as BackwardIcon } from './BackwardIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as SteeringWheelIcon } from './SteeringWheelIcon';
+export { default as SearchLocationIcon } from './SearchLocationIcon';

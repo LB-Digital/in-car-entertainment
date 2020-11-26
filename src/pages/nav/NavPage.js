@@ -2,9 +2,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 
+/* config */
+import * as ROUTES from '../../config/routes';
+
+
 /* components */
 // atoms
 import { WazeMap } from '../../components/atoms';
+import { SearchLocationIcon } from '../../components/atoms/icons/solid';
 // organisms
 import { VerticalNav } from '../../components/organisms';
 
@@ -32,10 +37,9 @@ const MapWrapper = styled('div')`
 
 /* config */
 const MAP_CONFIG = {
-    zoom: 14,
+    zoom: 15,
     lat: 51.482706,
-    lon: -0.006696,
-    pin: true
+    lng: -0.006696
 };
 
 
@@ -46,7 +50,7 @@ const _NavPage = () => {
         <StyledNavPage>
             <VerticalNav
                 options={[
-
+                    { navTo: ROUTES.NAV.SEARCH, icon: SearchLocationIcon, title: 'Search' }
                 ]}
             />
 
