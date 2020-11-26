@@ -36,7 +36,7 @@ const _Spinner = () => {
     /* render */
     return (
         <StyledSpinner>
-            <SteeringWheelIcon />
+            <SteeringWheelIcon size='lg' />
         </StyledSpinner>
     )
 };

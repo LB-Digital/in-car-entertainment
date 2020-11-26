@@ -17,6 +17,16 @@ const WazeMapWrapper = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  position: relative;
+`;
+
+const SpinnerWrapper = styled('div')`
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const StyledWazeMap = styled('iframe')`
@@ -55,17 +65,26 @@ const _WazeMap = ({ zoom, lat, lon, pin }) => {
     }, [ zoom, lat, lon, pin ]);
 
 
+    /* UI Handlers */
+    // on map load
+    const handleMapLoaded = async () => {
+        setMapIsLoaded(true);
+    };
+
+
     /* render */
     return (
         <WazeMapWrapper>
             {!mapIsLoaded && (
-                <Spinner/>
+                <SpinnerWrapper>
+                    <Spinner/>
+                </SpinnerWrapper>
             )}
 
             <StyledWazeMap
-                onLoad={() => setMapIsLoaded(true)}
+                onLoad={handleMapLoaded}
                 src={mapSrc}
-                style={{ display: (mapIsLoaded ? null : 'none') }}
+                style={{ opacity: (mapIsLoaded ? 1 : 0) }}
             />
         </WazeMapWrapper>
     )
