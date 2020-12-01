@@ -179,8 +179,8 @@ function App() {
 
     /* render */
     const theme = (themeType === 'light')
-        ? lightTheme(screenDimensions)
-        : darkTheme(screenDimensions);
+        ? { ...lightTheme(screenDimensions), mode: themeType }
+        : { ...darkTheme(screenDimensions), mode: themeType };
 
     return (
         <ThemeProvider

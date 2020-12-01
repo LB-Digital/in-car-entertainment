@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { stringify as qsStringify } from 'query-string';
 import GoogleMapReact from 'google-map-react';
 
@@ -40,6 +40,11 @@ const GOOGLE_API_KEY = 'AIzaSyAO5TnqkMKu-XMT6Y6TJ2_AlLY9ZSjlmoQ';
 
 const _Map = ({ zoom, lat, lng }) => {
 
+    /* hooks */
+    // styled-components
+    const theme = useTheme();
+
+
     /* hooks:state */
     // map loaded
     const [ mapIsLoaded, setMapIsLoaded ] = React.useState(false);
@@ -70,6 +75,10 @@ const _Map = ({ zoom, lat, lng }) => {
 
     };
 
+    const createMapOptions = (maps) => ({
+        styles: theme.mapStyles
+    });
+
 
     /* render */
     return (
@@ -86,6 +95,7 @@ const _Map = ({ zoom, lat, lng }) => {
                 defaultZoom={zoom}
                 yesIWantToUseGoogleMapApiInternals
                 onGoogleApiLoaded={({ map, maps }) => handleGoogleApiLoaded(map, maps)}
+                options={createMapOptions}
             />
         </MapWrapper>
     )

@@ -1,5 +1,7 @@
 // styles/theme.js
 
+import { lightMapStyles, darkMapStyles } from './map-styles';
+
 
 // *** base styles ***
 const spacing = (screenDimensions) => {
@@ -108,7 +110,9 @@ export const lightTheme = (screenDimensions) => {
         colors: {
             ...theme.colors,
             ...colors.light
-        }
+        },
+
+        mapStyles: lightMapStyles
     };
 };
 
@@ -121,6 +125,8 @@ export const darkTheme = (screenDimensions) => {
         colors: {
             ...theme.colors,
             ...colors.dark
-        }
+        },
+
+        mapStyles: darkMapStyles
     };
 };
