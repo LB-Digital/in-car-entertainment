@@ -200,20 +200,20 @@ function App() {
             >
                 <Cursor className='cursor' />
 
-                {/*<CSSTransition*/}
-                {/*    in={splashIn}*/}
-                {/*    timeout={{ enter: 2500, exit: 400 }}*/}
-                {/*    classNames='splash'*/}
-                {/*    // mountOnEnter*/}
-                {/*    unmountOnExit*/}
-                {/*    onEntered={() => handleSplashEntered()}*/}
-                {/*    onExited={() => handleSplashExited()}*/}
-                {/*    nodeRef={splashRef}*/}
-                {/*    appear={true}*/}
-                {/*    // enter={false}*/}
-                {/*>*/}
-                {/*    <Splash ref={splashRef} />*/}
-                {/*</CSSTransition>*/}
+                <CSSTransition
+                    in={splashIn}
+                    timeout={{ enter: 2500, exit: 400 }}
+                    classNames='splash'
+                    // mountOnEnter
+                    unmountOnExit
+                    onEntered={() => handleSplashEntered()}
+                    onExited={() => handleSplashExited()}
+                    nodeRef={splashRef}
+                    appear={true}
+                    // enter={false}
+                >
+                    <Splash ref={splashRef} />
+                </CSSTransition>
 
                 <CSSTransition
                     in={pageTransitionIn}

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled, { useTheme } from 'styled-components';
-import { stringify as qsStringify } from 'query-string';
 import GoogleMapReact from 'google-map-react';
 
 
@@ -18,11 +17,6 @@ const MapWrapper = styled('div')`
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   overflow: hidden;
   
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  
-  //position: relative;
 `;
 
 const SpinnerWrapper = styled('div')`
@@ -50,25 +44,10 @@ const _Map = ({ zoom, lat, lng }) => {
     const [ mapIsLoaded, setMapIsLoaded ] = React.useState(false);
 
 
-    /* hooks:effects */
-    // map source
-    // React.useEffect(() => {
-    //     const queryString = '?' + qsStringify(Object.assign({},
-    //         zoom && { zoom },
-    //         lat && { lat },
-    //         lon && { lon },
-    //         pin && { pin: 1 }
-    //     ));
-    //
-    //     setMapSrc(`${WAZE_IFRAME_URL}${queryString}`);
-    //
-    // }, [ zoom, lat, lon, pin ]);
-
-
     /* UI Handlers */
     // on google map api load
     const handleGoogleApiLoaded = (map, maps) => {
-        console.log('loaded!');
+        // console.log('loaded!');
 
         setMapIsLoaded(true);
 
