@@ -2,16 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 
-/* config */
-import * as ROUTES from '../../config/routes';
-
-
 /* components */
 // atoms
 import { Map } from '../../components/atoms';
-import { SearchLocationIcon } from '../../components/atoms/icons/solid';
 // organisms
-import { VerticalNav } from '../../components/organisms';
+import { NavVerticalNav } from '../../components/organisms';
 
 
 /* styles */
@@ -48,11 +43,7 @@ const _NavPage = () => {
 
     return (
         <StyledNavPage>
-            <VerticalNav
-                options={[
-                    { navTo: ROUTES.NAV.SEARCH, icon: SearchLocationIcon, title: 'Search' }
-                ]}
-            />
+            <NavVerticalNav/>
 
             <MapWrapper>
                 <Map {...MAP_CONFIG} />
