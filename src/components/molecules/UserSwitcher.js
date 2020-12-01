@@ -29,6 +29,7 @@ const RelAvatarSize = 0.035;
 // components
 const UserSwitcherWrapper = styled('div')`
   position: relative;
+  z-index: 500;
   
   width: ${({ theme: { screenDimensions } }) => (screenDimensions.width * RelSwitcherWidth)}px;
   //background: red;

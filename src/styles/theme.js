@@ -1,7 +1,5 @@
 // styles/theme.js
 
-import { css } from 'styled-components';
-
 import { lightMapStyles, darkMapStyles } from './map-styles';
 
 

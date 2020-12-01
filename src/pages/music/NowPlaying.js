@@ -93,12 +93,18 @@ const NowPlayingTextWrapper = styled('div')`
 `;
 
 
-const PlayerControls = styled('div')`
+const PlayerControlsWrapper = styled('div')`
+  //display: block;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-self: center;
+  align-items: center;
+  //flex-direction: row;
+  //justify-content: center;
+  //align-self: center;
   
+`;
+
+const PlayerControls = styled('div')`
   padding: ${({ theme: { spacing } }) => spacing.sm};
   
   background: ${({ theme: { colors } }) => colors.white};
@@ -192,15 +198,17 @@ const _NowPlaying = () => {
                 </NowPlayingContentWrapper>
 
 
-                <PlayerControls>
-                    <BackwardIcon size='sm' onClick={handlePressPrevTrack} />
-                    {isPlaying ? (
-                        <PauseIcon size='sm' onClick={() => setIsPlaying(false)} />
-                    ) : (
-                        <PlayIcon size='sm' onClick={() => setIsPlaying(true)} />
-                    )}
-                    <ForwardIcon size='sm' onClick={handlePressNextTrack} />
-                </PlayerControls>
+                <PlayerControlsWrapper>
+                    <PlayerControls>
+                        <BackwardIcon size='sm' onClick={handlePressPrevTrack} />
+                        {isPlaying ? (
+                            <PauseIcon size='sm' onClick={() => setIsPlaying(false)} />
+                        ) : (
+                            <PlayIcon size='sm' onClick={() => setIsPlaying(true)} />
+                        )}
+                        <ForwardIcon size='sm' onClick={handlePressNextTrack} />
+                    </PlayerControls>
+                </PlayerControlsWrapper>
             </NowPlayingWrapper>
         </StyledNowPlaying>
     )
