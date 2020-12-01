@@ -8,7 +8,7 @@ import * as ROUTES from '../../config/routes';
 
 /* components */
 // atoms
-import { WazeMap } from '../../components/atoms';
+import { Map } from '../../components/atoms';
 import { SearchLocationIcon } from '../../components/atoms/icons/solid';
 // organisms
 import { VerticalNav } from '../../components/organisms';
@@ -55,7 +55,7 @@ const _NavPage = () => {
             />
 
             <MapWrapper>
-                <WazeMap {...MAP_CONFIG} />
+                <Map {...MAP_CONFIG} />
             </MapWrapper>
         </StyledNavPage>
     )
