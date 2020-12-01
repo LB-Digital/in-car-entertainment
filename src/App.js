@@ -44,6 +44,8 @@ const Artists =
 const NavPages = import('./pages/nav/');
 const NavPage =
     React.lazy(() => NavPages.then(module => ({ default: module.NavPage })));
+const NavSearchPage =
+    React.lazy(() => NavPages.then(module => ({ default: module.NavSearchPage })));
 
 
 function App() {
@@ -249,6 +251,7 @@ function App() {
                             <Route exact path={ROUTES.MUSIC.ARTISTS} component={Artists} />
                             {/* nav pages */}
                             <Route exact path={ROUTES.NAV.HOME} component={NavPage} />
+                            <Route exact path={ROUTES.NAV.SEARCH} component={NavSearchPage} />
                         </Switch>
                     )}
                 </React.Suspense>

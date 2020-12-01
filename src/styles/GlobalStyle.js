@@ -12,8 +12,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     
-    cursor: none;
-    user-select: none;
+    cursor: none!important;
+    user-select: none!important;
   }
 
   body {
